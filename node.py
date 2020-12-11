@@ -13,9 +13,11 @@ class Node:
         self.pre = None
         self.fingerTable = [None] * M
 
-    def print_finger(self):
+    def print_finger_table(self):
+        i = 0
         for finger in self.fingerTable:
-            print(finger)
+            print(f"{i} : {finger}")
+            i += 1
 
     def __str__(self):
         return f"Node: ID: {self.ID} with successor {self.suc} and predecessor {self.pre} ."

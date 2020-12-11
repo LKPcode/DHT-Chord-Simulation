@@ -10,6 +10,7 @@ class DHT:
     def __init__(self):
         self.nodeDict = {}
         self.nodeNum = 0
+        self.hopsOfFindSuccessor = []
 
     # Get a random id that does not already exist
     def get_random_id(self):
@@ -92,35 +93,66 @@ class DHT:
             self.stabilizeNode(item[1])
 
     # Finds the successor of any given key iteratively
-    def findSuccessor(self, node, key):
+    def findSuccessor(self, node, key, recordHops=False):
         # node.fingerTable[0] == node.suc
         currentNode = node
+        hops = 0
         while True:
-            print("Find Successor")
+            #print("Find Successor")
             # if the key is in the range of the current node's predecessor and its own id then return its own id
             if currentNode.pre is not None and between(currentNode.pre, currentNode.ID, key):
+                if recordHops == True:
+                    self.hopsOfFindSuccessor.append(hops)
+
                 return self.nodeDict[currentNode.ID]
             # If the key is between the current node and its successor then we return the successor as the node that holds that key
             elif currentNode.fingerTable[0] is not None and between(currentNode.ID, currentNode.suc, key):
+                if recordHops == True:
+                    self.hopsOfFindSuccessor.append(hops)
+
                 return self.nodeDict[currentNode.suc]
 
             else:  # Search the finger table
-                # for i in range(1, M-1):
-                #     if currentNode.fingerTable[i] is not None and between(currentNode.fingerTable[i-1], currentNode.fingerTable[i], key):
-                #         currentNode = self.nodeDict[currentNode.fingerTable[i-1]]
-                #         continue
+                for i in range(M-1, 1, -1):
+                    if currentNode.fingerTable[i] is not None and not between(currentNode.ID, currentNode.fingerTable[i], key):
+                        currentNode = self.nodeDict[currentNode.fingerTable[i]]
+                        hops += 1
+                        continue
 
                 # This might be stupid ( Maybe we should be returning the last node in the fingertable instead of the first one)
                 currentNode = self.nodeDict[currentNode.suc]
+                hops += 1
 
     def fix_finger(self, node, i):
         ith_finger = (node.ID + 2**i) % 2**M
         node.fingerTable[i] = self.findSuccessor(node, ith_finger).ID
 
+    def fix_all_fingers_of_node(self, node):
+        for i in range(0, M):
+            self.fix_finger(node, i)
+
+    def fix_all_fingers_of_all_nodes(self):
+        for pair in self.nodeDict.items():
+            for i in range(0, M):
+                self.fix_finger(pair[1], i)
+
+    def send_random_exact_match_queries(self, amount):
+        for i in range(0, amount):
+            randKey = random.randint(0, 2 ** M)
+            randID = random.choice(list(self.nodeDict.keys()))
+            self.findSuccessor(self.nodeDict[randID], randKey, True)
+
     # Print the network in human readable form
+
     def print(self):
         for item in self.nodeDict.items():
             print(item[1])
+
+    def print_density(self):
+        network = ["_"] * 2**M
+        for id in self.nodeDict:
+            network[id] = "#"
+        print("".join(network))
 
 
 # The Great Enigma :)
@@ -137,9 +169,15 @@ def between(ID1, ID2, key):
 
 dht = DHT()
 
-dht.join()
-dht.join()
-dht.join()
+for i in range(0, 1024):
+    dht.join()
 
 
 randID = random.choice(list(dht.nodeDict.keys()))
+
+dht.fix_all_fingers_of_all_nodes()
+
+dht.send_random_exact_match_queries(100000)
+
+print(
+    f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")

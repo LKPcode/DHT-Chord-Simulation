@@ -6,12 +6,16 @@ from config import *
 
 class Node:
 
-    def __init__(self):
+    def __init__(self, id):
         self.hashTable = {}
-        self.ID = random.randint(0, 2 ** M)
+        self.ID = id  # random.randint(0, 2 ** M)
         self.suc = None
         self.pre = None
         self.fingerTable = [None] * M
+
+    def print_finger(self):
+        for finger in self.fingerTable:
+            print(finger)
 
     def __str__(self):
         return f"Node: ID: {self.ID} with successor {self.suc} and predecessor {self.pre} ."

@@ -11,12 +11,29 @@ class DHT:
         self.nodeDict = {}
         self.nodeNum = 0
 
+    # Get a random id that does not already exist
+    def get_random_id(self):
+        id = random.randint(0, 2 ** M)
+        while True:
+            if id in self.nodeDict:
+                id = random.randint(0, 2 ** M)
+            else:
+                break
+        return id
+
     # Adds a new node in the network
     def join(self):
-        newNode = Node()
+        # First check is the network is not full
+        if self.nodeNum >= 2 ** M:
+            print(
+                "Cannot add another node in the network because it reached maximum capacity -> 2**M ")
+            quit()
+        newNode = Node(self.get_random_id())
         # Add the first node of the network
         if self.nodeNum == 0:
             self.nodeDict[newNode.ID] = newNode
+            print(f"Joined: {self.nodeDict[newNode.ID]}")
+
         # Add a second node in the network
         elif self.nodeNum == 1:
             # its actually not random because only one node is in the dict
@@ -31,6 +48,8 @@ class DHT:
             newNode.fingerTable[0] = otherID
             newNode.pre = otherID
             self.nodeDict[newNode.ID] = newNode
+
+            print(f"Joined: {self.nodeDict[newNode.ID]}")
 
         # Add an node in the network if there are more than 2 already.
         else:
@@ -47,6 +66,13 @@ class DHT:
             self.notify(newNode)
             # Add newNode to the network
             self.nodeDict[newNode.ID] = newNode
+
+            print(f"Joined: {self.nodeDict[newNode.ID]}")
+
+            # Call stabilize so we dont have to do it manually
+            self.stabilize()
+            self.stabilize()
+
         # Increment the number of nodes in the network by one
         self.nodeNum += 1
 
@@ -65,22 +91,31 @@ class DHT:
         for item in self.nodeDict.items():
             self.stabilizeNode(item[1])
 
-    # Finds the successor of any given key recursively
+    # Finds the successor of any given key iteratively
     def findSuccessor(self, node, key):
-
         # node.fingerTable[0] == node.suc
+        currentNode = node
+        while True:
+            print("Find Successor")
+            # if the key is in the range of the current node's predecessor and its own id then return its own id
+            if currentNode.pre is not None and between(currentNode.pre, currentNode.ID, key):
+                return self.nodeDict[currentNode.ID]
+            # If the key is between the current node and its successor then we return the successor as the node that holds that key
+            elif currentNode.fingerTable[0] is not None and between(currentNode.ID, currentNode.suc, key):
+                return self.nodeDict[currentNode.suc]
 
-        # If the key is between this node and its successor then we return the successor as the node that holds that key
-        if node.fingerTable[0] is not None and between(node.ID, node.suc, key):
-            return self.nodeDict[node.suc]
+            else:  # Search the finger table
+                # for i in range(1, M-1):
+                #     if currentNode.fingerTable[i] is not None and between(currentNode.fingerTable[i-1], currentNode.fingerTable[i], key):
+                #         currentNode = self.nodeDict[currentNode.fingerTable[i-1]]
+                #         continue
 
-        else:  # Search the finger table
-            for i in range(1, M-1):
-                if node.fingerTable[i] is not None and between(node.fingerTable[i-1], node.fingerTable[i], key):
-                    return self.findSuccessor(self.nodeDict[node.fingerTable[i-1]], key)
+                # This might be stupid ( Maybe we should be returning the last node in the fingertable instead of the first one)
+                currentNode = self.nodeDict[currentNode.suc]
 
-            # This might be stupid ( Maybe we should be returning the last node in the fingertable and not the first one)
-            return self.findSuccessor(self.nodeDict[node.fingerTable[0]], key)
+    def fix_finger(self, node, i):
+        ith_finger = (node.ID + 2**i) % 2**M
+        node.fingerTable[i] = self.findSuccessor(node, ith_finger).ID
 
     # Print the network in human readable form
     def print(self):
@@ -103,3 +138,8 @@ def between(ID1, ID2, key):
 dht = DHT()
 
 dht.join()
+dht.join()
+dht.join()
+
+
+randID = random.choice(list(dht.nodeDict.keys()))

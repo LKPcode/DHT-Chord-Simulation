@@ -33,7 +33,7 @@ class DHT:
         # Add the first node of the network
         if self.nodeNum == 0:
             self.nodeDict[newNode.ID] = newNode
-            print(f"Joined: {self.nodeDict[newNode.ID]}")
+            #print(f"Joined: {self.nodeDict[newNode.ID]}")
 
         # Add a second node in the network
         elif self.nodeNum == 1:
@@ -50,7 +50,7 @@ class DHT:
             newNode.pre = otherID
             self.nodeDict[newNode.ID] = newNode
 
-            print(f"Joined: {self.nodeDict[newNode.ID]}")
+            # print(f"Joined: {self.nodeDict[newNode.ID]}")
 
         # Add an node in the network if there are more than 2 already.
         else:
@@ -68,7 +68,7 @@ class DHT:
             # Add newNode to the network
             self.nodeDict[newNode.ID] = newNode
 
-            print(f"Joined: {self.nodeDict[newNode.ID]}")
+            # print(f"Joined: {self.nodeDict[newNode.ID]}")
 
             # Call stabilize so we dont have to do it manually
             self.stabilize()
@@ -97,6 +97,7 @@ class DHT:
         # node.fingerTable[0] == node.suc
         currentNode = node
         hops = 0
+        keys = 0
         while True:
             #print("Find Successor")
             # if the key is in the range of the current node's predecessor and its own id then return its own id
@@ -117,6 +118,7 @@ class DHT:
                     if currentNode.fingerTable[i] is not None and not between(currentNode.ID, currentNode.fingerTable[i], key):
                         currentNode = self.nodeDict[currentNode.fingerTable[i]]
                         hops += 1
+                        keys +=1
                         continue
 
                 # This might be stupid ( Maybe we should be returning the last node in the fingertable instead of the first one)
@@ -183,7 +185,8 @@ def between(ID1, ID2, key):
 
 dht = DHT()
 
-for i in range(0, 20):
+#nodes is in config.py
+for i in range(0, nodes):
     dht.join()
 
 randID = random.choice(list(dht.nodeDict.keys()))
@@ -193,9 +196,16 @@ dht.fix_all_fingers_of_all_nodes()
 
 # dht.send_random_exact_match_queries(1000)
 
-dht.insert_random_values(1000)
-dht.insert_key_value_pair(32,222).print_hash_table()
+dht.insert_random_values(amount)
+# dht.insert_key_value_pair(32,222).print_hash_table()
 
-
+#allKeys list will gather every key from every node
+allKeys=[]
+#key is the node actually
+for key in dht.nodeDict:
+    #print (len(dht.nodeDict[key].hashTable))
+    allKeys.append(len(dht.nodeDict[key].hashTable))
+print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
+print("the perfect average is", amount/nodes)
 
 #     f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")

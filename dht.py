@@ -142,8 +142,21 @@ class DHT:
             randID = random.choice(list(self.nodeDict.keys()))
             self.findSuccessor(self.nodeDict[randID], randKey, True)
 
-    # Print the network in human readable form
 
+    def insert_key_value_pair(self,key,value):
+        randNodeID = random.choice(list(self.nodeDict.keys()))
+        targetNode = self.findSuccessor(self.nodeDict[randNodeID], key)
+        targetNode.save_key_value_pair(key,value)
+        return targetNode
+
+    def insert_random_values(self,amount):    
+        for i in range (0, amount):
+            randValue = random.randint(0, 2 ** M)
+            randKey = random.randint(0, 2 ** M)
+            self.insert_key_value_pair(randKey,randValue)
+
+    # Print the network in human readable form
+    
     def print(self):
         for item in self.nodeDict.items():
             print(item[1])
@@ -167,17 +180,22 @@ def between(ID1, ID2, key):
         return True if key > ID1 or key <= ID2 else False
 
 
+
 dht = DHT()
 
-for i in range(0, 1024):
+for i in range(0, 20):
     dht.join()
-
 
 randID = random.choice(list(dht.nodeDict.keys()))
 
+
 dht.fix_all_fingers_of_all_nodes()
 
-dht.send_random_exact_match_queries(100000)
+# dht.send_random_exact_match_queries(1000)
 
-print(
-    f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")
+dht.insert_random_values(1000)
+dht.insert_key_value_pair(32,222).print_hash_table()
+
+
+
+#     f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")

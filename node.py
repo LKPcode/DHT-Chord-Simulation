@@ -19,5 +19,15 @@ class Node:
             print(f"{i} : {finger}")
             i += 1
 
+    def save_key_value_pair(self,key,value):
+        self.hashTable[key]=value
+
+    def print_hash_table(self):
+        print("Hash Table of node",self.ID)
+        for key in self.hashTable:
+            print(key, '->', self.hashTable[key])
+
     def __str__(self):
         return f"Node: ID: {self.ID} with successor {self.suc} and predecessor {self.pre} ."
+
+    

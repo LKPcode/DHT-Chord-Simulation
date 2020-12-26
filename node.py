@@ -19,6 +19,10 @@ class Node:
             print(f"{i} : {finger}")
             i += 1
 
+    def transfer_hash_table(self,table):
+        for item in table.items():
+            self.save_key_value_pair(item[0],item[1])
+
     def save_key_value_pair(self,key,value):
         self.hashTable[key]=value
 

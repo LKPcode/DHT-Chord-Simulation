@@ -1,9 +1,10 @@
 import random
 from node import Node
-from config import *
+import config
+from hash import *
+
 
 # The Almighty God that controls Everything
-
 
 class DHT:
 
@@ -19,8 +20,8 @@ class DHT:
             if id in self.nodeDict:
                 id = random.randint(0, 2 ** M)
             else:
-                break
-        return id
+                break        
+        return hash_data(id)
 
     # Adds a new node in the network
     def join(self):
@@ -71,11 +72,34 @@ class DHT:
             # print(f"Joined: {self.nodeDict[newNode.ID]}")
 
             # Call stabilize so we dont have to do it manually
-            self.stabilize()
+
             self.stabilize()
 
         # Increment the number of nodes in the network by one
         self.nodeNum += 1
+
+    def deleteNode(self):
+        #find a random node
+        randID = random.choice(list(self.nodeDict.keys()))
+        deletedNode = self.nodeDict[randID]
+        #find the successor of deleted node
+        sucOfDeleted = deletedNode.suc
+        #find the predecessor of deleted node
+        preOfDeleted = deletedNode.pre
+        #assign the successor of deleted node to the successor of the predecessor node of the deleted node
+        self.nodeDict[deletedNode.pre].suc = sucOfDeleted
+        #assign the predecessor of deleted node to the predecessor of the successor node of the deleted node
+        self.nodeDict[deletedNode.suc].pre = preOfDeleted
+        self.nodeDict[sucOfDeleted].transfer_hash_table(deletedNode.hashTable)
+        self.stabilize()
+        #and remove deleted node from nodes dictionary
+        self.nodeDict.pop(randID)
+        # self.fix_all_fingers_of_all_nodes()
+        self.nodeNum -= 1
+    
+    def update_finger_tables_for_deleted_node(self,node):
+        pass
+
 
     # Notifies a node's successor about its existance so that it can update its predecessor
     def notify(self, node):
@@ -97,7 +121,6 @@ class DHT:
         # node.fingerTable[0] == node.suc
         currentNode = node
         hops = 0
-        keys = 0
         while True:
             #print("Find Successor")
             # if the key is in the range of the current node's predecessor and its own id then return its own id
@@ -115,12 +138,14 @@ class DHT:
 
             else:  # Search the finger table
                 for i in range(M-1, 1, -1):
-                    if currentNode.fingerTable[i] is not None and not between(currentNode.ID, currentNode.fingerTable[i], key):
-                        currentNode = self.nodeDict[currentNode.fingerTable[i]]
-                        hops += 1
-                        keys +=1
-                        continue
-
+                    try:
+                        if currentNode.fingerTable[i] is not None and not between(currentNode.ID, currentNode.fingerTable[i], key):
+                            print(currentNode.fingerTable[i])
+                            currentNode = self.nodeDict[currentNode.fingerTable[i]]
+                            hops += 1
+                            continue
+                    except:
+                        continue            
                 # This might be stupid ( Maybe we should be returning the last node in the fingertable instead of the first one)
                 currentNode = self.nodeDict[currentNode.suc]
                 hops += 1
@@ -137,25 +162,23 @@ class DHT:
         for pair in self.nodeDict.items():
             for i in range(0, M):
                 self.fix_finger(pair[1], i)
-
-    def send_random_exact_match_queries(self, amount):
-        for i in range(0, amount):
-            randKey = random.randint(0, 2 ** M)
-            randID = random.choice(list(self.nodeDict.keys()))
-            self.findSuccessor(self.nodeDict[randID], randKey, True)
-
-
+    
+    #inserting values and keys into nodes
     def insert_key_value_pair(self,key,value):
         randNodeID = random.choice(list(self.nodeDict.keys()))
         targetNode = self.findSuccessor(self.nodeDict[randNodeID], key)
         targetNode.save_key_value_pair(key,value)
         return targetNode
 
-    def insert_random_values(self,amount):    
-        for i in range (0, amount):
-            randValue = random.randint(0, 2 ** M)
-            randKey = random.randint(0, 2 ** M)
-            self.insert_key_value_pair(randKey,randValue)
+    #inserting data and hashed data as value and key of the node
+    def insert_values(self,value,hashedValue):    
+        for i,j in zip(hashedValue, value):  
+            self.insert_key_value_pair(i,j)
+
+    #deleting key value pair using the key 
+    def delete_pair(self,key):
+        pass
+
 
     # Print the network in human readable form
     
@@ -191,21 +214,35 @@ for i in range(0, nodes):
 
 randID = random.choice(list(dht.nodeDict.keys()))
 
-
 dht.fix_all_fingers_of_all_nodes()
-
+print (dht.nodeNum)
 # dht.send_random_exact_match_queries(1000)
 
-dht.insert_random_values(amount)
+dht.insert_values(data,hashedData)
 # dht.insert_key_value_pair(32,222).print_hash_table()
+
 
 #allKeys list will gather every key from every node
 allKeys=[]
-#key is the node actually
+#key is the node actuzally
 for key in dht.nodeDict:
     #print (len(dht.nodeDict[key].hashTable))
     allKeys.append(len(dht.nodeDict[key].hashTable))
 print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
-print("the perfect average is", amount/nodes)
-
+print("the perfect average is", len(hashedData)/nodes)
+print (dht.nodeNum)
 #     f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")
+# print(hash_integer(2))
+
+# for key in dht.nodeDict:
+#     print ("node: ", key)
+#     dht.nodeDict[key].print_hash_table()
+
+# print (randID)
+dht.deleteNode()
+dht.fix_all_fingers_of_all_nodes()
+for key in dht.nodeDict:
+    #print (len(dht.nodeDict[key].hashTable))
+    allKeys.append(len(dht.nodeDict[key].hashTable))
+print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
+print("the perfect average is", len(hashedData)/nodes)

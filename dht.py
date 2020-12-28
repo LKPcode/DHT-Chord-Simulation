@@ -37,7 +37,7 @@ class DHT:
         # Add the first node of the network
         if self.nodeNum == 0:
             self.nodeDict[newNode.ID] = newNode
-            #print(f"Joined: {self.nodeDict[newNode.ID]}")
+            # print(f"Joined: {self.nodeDict[newNode.ID]}")
 
         # Add a second node in the network
         elif self.nodeNum == 1:
@@ -65,7 +65,7 @@ class DHT:
             newNode.suc = sucNode.ID
             newNode.fingerTable[0] = sucNode.ID
 
-            #self.nodeDict[sucNode.ID].pre = newNode.ID
+            # self.nodeDict[sucNode.ID].pre = newNode.ID
 
             # Notify newNode's successor about its existance
             self.notify(newNode)
@@ -128,36 +128,31 @@ class DHT:
         # node.fingerTable[0] == node.suc
         currentNode = node
         hops = 0
+        count = 0
+
         while True:
-            #print("Find Successor")
+            # print("Find Successor")
             # if the key is in the range of the current node's predecessor and its own id then return its own id
             if currentNode.pre is not None and between(currentNode.pre, currentNode.ID, key):
+                if count != 0:
+                    hops += 1
                 if recordHops == True:
                     self.hopsOfFindSuccessor.append(hops)
-
                 return self.nodeDict[currentNode.ID]
-            # If the key is between the current node and its successor then we return the successor as the node that holds that key
-            elif currentNode.fingerTable[0] is not None and between(currentNode.ID, currentNode.suc, key):
-                if recordHops == True:
-                    self.hopsOfFindSuccessor.append(hops)
-                try:
-                    return self.nodeDict[currentNode.suc]
-                except:
-                    continue
-
+            # elif currentNode.fingerTable[0] is not None and between(currentNode.ID, currentNode.suc , key):
+            #     return self.nodeDict[currentNode.suc]
             else:  # Search the finger table
-                for i in range(M-1, 1, -1):
+                for i in range(M-1, 0, -1):
                     try:
                         if currentNode.fingerTable[i] is not None and not between(currentNode.ID, currentNode.fingerTable[i], key):
-                            # print(currentNode.fingerTable[i])
                             currentNode = self.nodeDict[currentNode.fingerTable[i]]
                             hops += 1
-                            continue
+                            break
                     except:
                         continue
-                # This might be stupid ( Maybe we should be returning the last node in the fingertable instead of the first one)
                 currentNode = self.nodeDict[currentNode.suc]
-                hops += 1
+                # hops += 1
+                count += 1
 
     def fix_finger(self, node, i):
         ith_finger = (node.ID + 2**i) % 2**M
@@ -171,6 +166,12 @@ class DHT:
         for pair in self.nodeDict.items():
             for i in range(0, M):
                 self.fix_finger(pair[1], i)
+
+    def send_random_exact_match_queries(self, amount):
+        for i in range(0, amount):
+            randKey = random.randint(0, 2 ** M)
+            randID = random.choice(list(self.nodeDict.keys()))
+            self.findSuccessor(self.nodeDict[randID], randKey, True)
 
     # inserting values and keys into nodes
     def insert_key_value_pair(self, key, value):
@@ -205,19 +206,19 @@ class DHT:
             network[id] = "#"
         print("".join(network))
 
-    # def search_ft(self, id):
-    #     for node in self.nodeDict:
-    #         for finger in self.nodeDict[node].fingerTable:
-    #             if finger == id:
-    #                 return "ID Found in a finger tables"
-    #     return "Finger NOT Found in finger Tables"
+    def search_ft(self, id):
+        for node in self.nodeDict:
+            for finger in self.nodeDict[node].fingerTable:
+                if finger == id:
+                    return "ID Found in a finger tables"
+        return "Finger NOT Found in finger Tables"
 
-    # def search_ft_none(self):
-    #     for node in self.nodeDict:
-    #         for finger in self.nodeDict[node].fingerTable:
-    #             if finger is None:
-    #                 return "there is a none value in fingertables"
-    #     return "no None value found in finger tables"
+    def search_ft_none(self):
+        for node in self.nodeDict:
+            for finger in self.nodeDict[node].fingerTable:
+                if finger is None:
+                    return "there is a none value in fingertables"
+        return "no None value found in finger tables"
 
 
 # The Great Enigma :)
@@ -252,7 +253,7 @@ dht.insert_values(data, hashedData)
 allKeys = []
 # key is the node actuzally
 for key in dht.nodeDict:
-    #print (len(dht.nodeDict[key].hashTable))
+    # print (len(dht.nodeDict[key].hashTable))
     allKeys.append(len(dht.nodeDict[key].hashTable))
 print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
 print("the perfect average is", len(hashedData)/nodes)

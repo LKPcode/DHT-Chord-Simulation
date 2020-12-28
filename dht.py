@@ -4,7 +4,7 @@ import config
 from hash import *
 
 
-# The Almighty God that controls Everything
+# The Allmighty God that controls Everything
 
 class DHT:
 
@@ -15,13 +15,14 @@ class DHT:
 
     # Get a random id that does not already exist
     def get_random_id(self):
-        id = random.randint(0, 2 ** M)
+        id = hash_data(random.randint(0, 2 ** M))
+
         while True:
             if id in self.nodeDict:
-                id = random.randint(0, 2 ** M)
+                id = hash_data(random.randint(0, 2 ** M))
             else:
-                break        
-        return hash_data(id)
+                break
+        return id
 
     # Adds a new node in the network
     def join(self):
@@ -31,6 +32,8 @@ class DHT:
                 "Cannot add another node in the network because it reached maximum capacity -> 2**M ")
             quit()
         newNode = Node(self.get_random_id())
+        # print("Node Joined: ", newNode.ID)
+
         # Add the first node of the network
         if self.nodeNum == 0:
             self.nodeDict[newNode.ID] = newNode
@@ -78,30 +81,34 @@ class DHT:
         # Increment the number of nodes in the network by one
         self.nodeNum += 1
 
-    def deleteNode(self):
-        #find a random node
+    def removeNodeAbruptly(self):
+        randID = random.choice(list(self.nodeDict.keys()))
+        self.nodeDict.pop(randID)
+
+    def removeNodeSafely(self):
+        # find a random node
         randID = random.choice(list(self.nodeDict.keys()))
         deletedNode = self.nodeDict[randID]
-        #find the successor of deleted node
-        sucOfDeleted = deletedNode.suc
-        #find the predecessor of deleted node
-        preOfDeleted = deletedNode.pre
-        #assign the successor of deleted node to the successor of the predecessor node of the deleted node
-        self.nodeDict[deletedNode.pre].suc = sucOfDeleted
-        #assign the predecessor of deleted node to the predecessor of the successor node of the deleted node
-        self.nodeDict[deletedNode.suc].pre = preOfDeleted
-        self.nodeDict[sucOfDeleted].transfer_hash_table(deletedNode.hashTable)
-        self.stabilize()
-        #and remove deleted node from nodes dictionary
+        # assign the successor of deleted node to the successor of the predecessor node of the deleted node
+        self.nodeDict[deletedNode.pre].suc = deletedNode.suc
+        self.nodeDict[deletedNode.pre].fingerTable[0] = deletedNode.suc
+
+        # assign the predecessor of deleted node to the predecessor of the successor node of the deleted node
+        self.nodeDict[deletedNode.suc].pre = deletedNode.pre
+
+        self.nodeDict[deletedNode.suc].transfer_hash_table(
+            deletedNode.hashTable)
+
+        # and remove deleted node from nodes dictionary
         self.nodeDict.pop(randID)
         # self.fix_all_fingers_of_all_nodes()
-        self.nodeNum -= 1
-    
-    def update_finger_tables_for_deleted_node(self,node):
-        pass
+        self.stabilize()
 
+        self.nodeNum -= 1
+        print("Deleted Node: ", randID)
 
     # Notifies a node's successor about its existance so that it can update its predecessor
+
     def notify(self, node):
         self.nodeDict[node.suc].pre = node.ID
 
@@ -133,19 +140,21 @@ class DHT:
             elif currentNode.fingerTable[0] is not None and between(currentNode.ID, currentNode.suc, key):
                 if recordHops == True:
                     self.hopsOfFindSuccessor.append(hops)
-
-                return self.nodeDict[currentNode.suc]
+                try:
+                    return self.nodeDict[currentNode.suc]
+                except:
+                    continue
 
             else:  # Search the finger table
                 for i in range(M-1, 1, -1):
                     try:
                         if currentNode.fingerTable[i] is not None and not between(currentNode.ID, currentNode.fingerTable[i], key):
-                            print(currentNode.fingerTable[i])
+                            # print(currentNode.fingerTable[i])
                             currentNode = self.nodeDict[currentNode.fingerTable[i]]
                             hops += 1
                             continue
                     except:
-                        continue            
+                        continue
                 # This might be stupid ( Maybe we should be returning the last node in the fingertable instead of the first one)
                 currentNode = self.nodeDict[currentNode.suc]
                 hops += 1
@@ -162,26 +171,30 @@ class DHT:
         for pair in self.nodeDict.items():
             for i in range(0, M):
                 self.fix_finger(pair[1], i)
-    
-    #inserting values and keys into nodes
-    def insert_key_value_pair(self,key,value):
+
+    # inserting values and keys into nodes
+    def insert_key_value_pair(self, key, value):
         randNodeID = random.choice(list(self.nodeDict.keys()))
         targetNode = self.findSuccessor(self.nodeDict[randNodeID], key)
-        targetNode.save_key_value_pair(key,value)
+        targetNode.save_key_value_pair(key, value)
         return targetNode
 
-    #inserting data and hashed data as value and key of the node
-    def insert_values(self,value,hashedValue):    
-        for i,j in zip(hashedValue, value):  
-            self.insert_key_value_pair(i,j)
+    # inserting data and hashed data as value and key of the node
+    def insert_values(self, value, hashedValue):
+        for i, j in zip(hashedValue, value):
+            self.insert_key_value_pair(i, j)
 
-    #deleting key value pair using the key 
-    def delete_pair(self,key):
-        pass
-
+    # deleting key value pair using the key
+    def delete_pair(self, key):
+        randID = random.choice(list(self.nodeDict.keys()))
+        node = self.findSuccessor(self.nodeDict[randID], key)
+        if node.hashTable[key] is not None:
+            node.hashTable.pop(key)
+            return True
+        return False
 
     # Print the network in human readable form
-    
+
     def print(self):
         for item in self.nodeDict.items():
             print(item[1])
@@ -191,6 +204,20 @@ class DHT:
         for id in self.nodeDict:
             network[id] = "#"
         print("".join(network))
+
+    # def search_ft(self, id):
+    #     for node in self.nodeDict:
+    #         for finger in self.nodeDict[node].fingerTable:
+    #             if finger == id:
+    #                 return "ID Found in a finger tables"
+    #     return "Finger NOT Found in finger Tables"
+
+    # def search_ft_none(self):
+    #     for node in self.nodeDict:
+    #         for finger in self.nodeDict[node].fingerTable:
+    #             if finger is None:
+    #                 return "there is a none value in fingertables"
+    #     return "no None value found in finger tables"
 
 
 # The Great Enigma :)
@@ -205,32 +232,31 @@ def between(ID1, ID2, key):
         return True if key > ID1 or key <= ID2 else False
 
 
-
 dht = DHT()
 
-#nodes is in config.py
+# nodes is in config.py
 for i in range(0, nodes):
     dht.join()
 
 randID = random.choice(list(dht.nodeDict.keys()))
 
 dht.fix_all_fingers_of_all_nodes()
-print (dht.nodeNum)
+# print(dht.nodeNum)
 # dht.send_random_exact_match_queries(1000)
 
-dht.insert_values(data,hashedData)
+dht.insert_values(data, hashedData)
 # dht.insert_key_value_pair(32,222).print_hash_table()
 
 
-#allKeys list will gather every key from every node
-allKeys=[]
-#key is the node actuzally
+# allKeys list will gather every key from every node
+allKeys = []
+# key is the node actuzally
 for key in dht.nodeDict:
     #print (len(dht.nodeDict[key].hashTable))
     allKeys.append(len(dht.nodeDict[key].hashTable))
 print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
 print("the perfect average is", len(hashedData)/nodes)
-print (dht.nodeNum)
+print(dht.nodeNum)
 #     f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")
 # print(hash_integer(2))
 
@@ -239,10 +265,7 @@ print (dht.nodeNum)
 #     dht.nodeDict[key].print_hash_table()
 
 # print (randID)
-dht.deleteNode()
+for i in range(0, 100):
+    dht.removeNodeSafely()
+
 dht.fix_all_fingers_of_all_nodes()
-for key in dht.nodeDict:
-    #print (len(dht.nodeDict[key].hashTable))
-    allKeys.append(len(dht.nodeDict[key].hashTable))
-print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
-print("the perfect average is", len(hashedData)/nodes)

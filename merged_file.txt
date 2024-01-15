@@ -1,0 +1,502 @@
+name,awards,university
+Scott Aaronson,4,Cornell University
+Rediet Abebe,0,Cornell University
+Hal Abelson,1,Princeton University
+Serge Abiteboul,7,University of Southern California
+Samson Abramsky,5,"King%27s College, Cambridge"
+Leonard Adleman,1,"University of California, Berkeley"
+Manindra Agrawal,8,Indian Institute of Technology Kanpur
+Luis von Ahn,4,Duke University
+Alfred Aho,5,University of Toronto
+Frances E. Allen,7,University at Albany
+Gene Amdahl,3,South Dakota State University
+David P. Anderson,1,Wesleyan University
+Cecilia R. Aragon,1,California Institute of Technology
+Bruce Arden,0,Purdue University
+Angie Jones,0,Tennessee State University
+Sanjeev Arora,0,Bachelor of Science
+Winifred Asprey,0,Vassar College
+John Vincent Atanasoff,1,University of Florida
+Shakuntala Atre,0,University of Poona
+Charles Babbage,1,"Peterhouse, Cambridge"
+Charles Bachman,3,University of Pennsylvania
+Roland Carl Backhouse,0,"Churchill College, Cambridge"
+John Backus,3,University of Virginia
+David F. Bacon,1,"University of California, Berkeley"
+David Bader (computer scientist),11,Lehigh University
+Victor Bahl,0,"University of Massachusetts, Amherst"
+Anthony James Barr,0,North Carolina State University
+Jean Bartik,2,Northwest Missouri State University
+Andrew Barto,2,University of Michigan
+Friedrich L. Bauer,3,Ludwig-Maximilians-Universit%C3%A4t
+Rudolf Bayer,2,University of Illinois at Urbana%E2%80%93Champaign
+Gordon Bell,3,MIT
+Steven M. Bellovin,0,Columbia University
+Tim Berners-Lee,5,"The Queen%27s College, Oxford"
+Daniel J. Bernstein,0,"University of California, Berkeley"
+Jeff Bezos,0,Princeton University
+Abhay Bhushan,0,Indian Institute of Technology Kanpur
+Sue Black (computer scientist),0,London South Bank University
+David Blei,2,Brown University
+Dorothy Blum,0,Brooklyn College
+Lenore Blum,4,Simmons University
+Manuel Blum,1,Massachusetts Institute of Technology
+Grady Booch,2,United States Air Force Academy
+George Boole,0,#cite note-MacTutor-3
+Andrew Donald Booth,0,"Jesus College, Cambridge"
+Anita Borg,0,New York University
+Jonathan Bowen,2,"University College, Oxford"
+Stephen R. Bourne,3,King%27s College London
+Harry Bouwman,0,VU University Amsterdam
+Robert S. Boyer,0,Doctor of Philosophy
+Karlheinz Brandenburg,1,University of Erlangen-Nuremberg
+Sergey Brin,0,"University of Maryland, College Park"
+Per Brinch Hansen,1,Technical University of Denmark
+Fred Brooks,5,Duke University
+Rod Brooks,1,Stanford University
+Michael Butler (computer scientist),0,"Trinity College, Dublin"
+Tracy Camp,1,The College of William and Mary
+Martin Campbell-Kelly,0,University of Sunderland
+Rosemary Candlin,0,University of Cambridge
+Luca Cardelli,3,University of Pisa
+Michael E. Caspersen,10,Aarhus University
+Edwin Catmull,4,University of Utah
+Vint Cerf,13,Stanford University
+Robert Cailliau,0,Ghent University
+Peter Chen,4,National Taiwan University
+Tracy Chou,0,Stanford University
+Alonzo Church,0,Princeton University
+Edmund M. Clarke,1,Cornell University
+John Cocke (computer scientist),6,Duke University
+Edgar F. Codd,2,"Exeter College, Oxford"
+Simon Colton,0,Durham University
+Richard W. Conway,4,Cornell University
+Stephen Cook,9,Harvard University
+Danese Cooper,0,"University of California, Los Angeles"
+Patrick Cousot,10,%C3%89cole Nationale Sup%C3%A9rieure des Mines de Nancy
+Ingemar Cox,0,University College London
+Seymour Cray,0,University of Minnesota
+Nello Cristianini,2,University of Trieste
+Jon Crowcroft,2,Westminster School
+Glen Culler,3,"University of California, Berkeley"
+Haskell Curry,0,Harvard University
+Luigi Dadda,0,Politecnico di Milano
+Ole-Johan Dahl,2,University of Oslo
+Ryan Dahl,0,UC San Diego
+Samir Das,0,Georgia Tech
+Neil Daswani,0,Stanford University
+Christopher J. Date,0,University of Cambridge
+Terry A. Davis,0,Bachelor%27s degree
+Jeff Dean,0,University of Minnesota
+Erik Demaine,3,Dalhousie University
+Tom DeMarco,1,Cornell University
+Richard DeMillo,0,University of St. Thomas (Minnesota)
+Dorothy E. Denning,2,University of Michigan
+Peter J. Denning,2,Massachusetts Institute of Technology
+Robert Dewar,0,University of Chicago
+Vinod Dham,0,#cite note-edu-1
+Whitfield Diffie,8,Massachusetts Institute of Technology
+Edsger W. Dijkstra,5,Leiden University
+Matthew Dillon,0,"University of California, Berkeley"
+Jack Dongarra,15,Chicago State University
+Paul Dourish,0,Computer Science
+Charles Stark Draper,6,Massachusetts Institute of Technology
+Susan Dumais,0,Indiana University
+Adam Dunkels,0,Swedish Institute of Computer Science
+Jon Michael Dunn,0,Oberlin College
+Annie Easley,0,Cleveland State University
+John Presper Eckert,5,University of Pennsylvania
+Alan Edelman,3,Massachusetts Institute of Technology
+Brendan Eich,0,University of Illinois Urbana-Champaign
+Philip Emeagwali,0,George Washington University School of Engineering and Applied Science
+E. Allen Emerson,2,Harvard University
+Douglas Engelbart,9,Oregon State University
+Barbara Engelhardt,1,Stanford University
+David Eppstein,0,Stanford University
+Andrey Ershov,0,Moscow State University
+Philip Don Estridge,0,University of Florida
+Oren Etzioni,1,Harvard University
+Christopher Riche Evans,0,University College London
+Shimon Even,0,Harvard University
+Scott Fahlman,2,Massachusetts Institute of Technology
+Edward Feigenbaum,5,Carnegie Mellon University
+Edward Felten,2,California Institute of Technology
+Tim Finin,2,Massachusetts Institute of Technology
+Donald Firesmith,0,Arizona State University
+Tommy Flowers,0,University of London
+Robert W. Floyd,2,University of Chicago
+Sally Floyd,0,"University of California, Berkeley"
+Lawrence J. Fogel,0,New York University
+James D. Foley,6,University of Michigan
+Ken Forbus,0,Massachusetts Institute of Technology
+Lance Fortnow,4,Cornell University
+Mahmoud Samir Fayed,0,Menoufia University
+Martin Fowler (software engineer),0,University College London
+Robert France,1,University of the West Indies
+Edward Fredkin,1,California Institute of Technology
+Yoav Freund,1,The Hebrew University of Jerusalem
+Daniel P. Friedman,0,University of Houston
+Charlotte Froese Fischer,7,University of British Columbia
+Ping Fu,0,"University of California, San Diego"
+Kunihiko Fukushima,0,Kyoto University
+D. R. Fulkerson,3,Southern Illinois University
+Richard P. Gabriel,2,Northeastern University
+Zvi Galil,3,Tel Aviv University
+Bernard Galler,0,University of Chicago
+Hector Garcia-Molina,1,Monterrey Institute of Technology and Higher Education
+Michael Garey,0,University of Wisconsin%E2%80%93Madison
+Bill Gates,4,Harvard University
+David Gelernter,1,Yale University
+Lisa Gelobter,0,Brown University
+Charles Geschke,4,Xavier University
+Zoubin Ghahramani,2,University of Pennsylvania
+Sanjay Ghemawat,1,Cornell University
+Jeremy Gibbons,0,University of Edinburgh
+Juan E. Gilbert,0,Miami University
+Lee Giles,7,Rhodes College
+Seymour Ginsburg,0,CCNY
+Ashok Goel,2,Ohio State University
+Joseph Goguen,0,Harvard University
+Adele Goldberg (computer scientist),0,University of Michigan
+Andrew V. Goldberg,1,Massachusetts Institute of Technology
+Ian Goldberg,0,"University of California, Berkeley"
+Oded Goldreich,1,Technion
+Shafi Goldwasser,13,Carnegie Mellon University
+Gene Golub,0,University of Illinois at Urbana-Champaign
+Ian Goodfellow,0,Stanford University
+James Gosling,2,University of Calgary
+Paul Graham (computer programmer),0,Gateway High School (Pennsylvania)
+Susan L. Graham,5,Harvard
+Jim Gray (computer scientist),3,"University of California, Berkeley"
+Sheila Greibach,0,Radcliffe College
+David Gries,7,Bachelor of Science
+Bill Gropp,2,Stanford University
+Ramanathan V. Guha,0,Indian Institute of Technology Madras
+Neil J. Gunther,0,La Trobe University
+Nico Habermann,0,Free University of Amsterdam
+Eldon C. Hall,0,University of Washington
+Wendy Hall,1,The Ellen Wilkinson School for Girls
+Margaret Hamilton (software engineer),1,University of Michigan
+Richard Hamming,4,University of Chicago
+Jiawei Han,0,University of Wisconsin - Madison
+Frank Harary,0,Brooklyn College
+Brian Harris (translation researcher),0,School of Oriental and African Studies
+Juris Hartmanis,1,University of Marburg
+Les Hatton,1,"King%27s College, Cambridge"
+He Jifeng,0,Fudan University
+Eric Hehner,0,Carleton University
+Martin Hellman,10,New York University
+Gernot Heiser,6,University of Freiburg
+James Hendler,0,Yale University
+Carl Hewitt,0,MIT
+Danny Hillis,2,Massachusetts Institute of Technology
+Geoffrey Hinton,9,University of Cambridge
+Julia Hirschberg,9,University of Pennsylvania
+C. A. R. Hoare,7,University of Oxford
+Louis Hodes,0,Bachelor of Science
+Betty Holberton,4,University of Pennsylvania
+John Henry Holland,2,University of Michigan
+Herman Hollerith,3,City College of New York
+Gerard Holzmann,1,Delft University of Technology
+John Hopcroft,8,Seattle University
+Grace Hopper,10,Vassar College
+Alston Householder,0,University of Chicago
+Paul Hudak,9,Vanderbilt University
+David A. Huffman,1,Ohio State University
+John Hughes (computer scientist),1,University of Oxford
+Roger Hui,1,University of Alberta
+Roberto Ierusalimschy,0,Pontifical Catholic University of Rio de Janeiro
+Dan Ingalls,5,Harvard University
+Mary Jane Irwin,3,University of Illinois at Urbana-Champaign
+Kenneth E. Iverson,4,Queen%27s University at Kingston
+Ivar Jacobson,0,Chalmers University of Technology
+"Anil K. Jain (computer scientist, born 1948)",12,"Indian Institute of Technology, Kanpur"
+Ramesh Jain,0,"Indian Institute of Technology, Kharagpur"
+David S. Johnson,2,Amherst College
+Stephen C. Johnson,0,Columbia University
+Cliff Jones (computer scientist),0,University of Oxford
+Michael I. Jordan,8,"University of California, San Diego"
+Mathai Joseph,1,"Wilson College, Mumbai"
+Aravind K. Joshi,0,"College of Engineering, Pune"
+Bill Joy,4,University of Michigan
+Dan Jurafsky,1,University of California at Berkeley
+William Kahan,5,University of Toronto
+Robert E. Kahn,12,City College of New York
+Avinash Kak,0,University of Madras
+David Karger,0,Harvard University
+Richard Karp,9,Harvard University
+Narendra Karmarkar,0,Indian Institute of Technology Bombay
+Ted Kaehler,0,Stanford University
+Alan Kay,3,University of Colorado at Boulder
+Neeraj Kayal,0,IIT Kanpur
+Manolis Kellis,3,Massachusetts Institute of Technology
+Ken Kennedy (computer scientist),0,Rice University
+Brian Kernighan,0,University of Toronto
+Gregor Kiczales,0,Massachusetts Institute of Technology
+Peter T. Kirstein,3,Highgate School
+Stephen Cole Kleene,2,Amherst College
+Dan Klein,2,Cornell University
+Leonard Kleinrock,6,City College of New York
+Donald Knuth,14,Case Western Reserve University
+Andrew Koenig (programmer),0,Columbia University
+Daphne Koller,5,Hebrew University of Jerusalem
+Andrey Nikolaevich Kolmogorov,9,Moscow State University
+Janet L. Kolodner,1,Brandeis University
+Cornelis H. A. Koster,0,University of Amsterdam
+Robert Kowalski,1,University of Chicago
+Joseph Kruskal,0,University of Chicago
+Maarja Kruusmaa,0,Tallinn University of Technology
+Thomas E. Kurtz,0,Princeton University
+Richard E. Ladner,5,St. Mary%27s College of California
+Monica S. Lam,0,University of British Columbia
+Leslie Lamport,6,Massachusetts Institute of Technology
+Butler Lampson,6,Harvard University
+Peter Landin,0,"Clare College, Cambridge"
+Tom Lane (computer scientist),0,Carnegie Mellon University
+Chris Lattner,2,University of Portland
+Edward D. Lazowska,0,Brown University
+Manny M Lehman,3,Imperial College London
+Charles E. Leiserson,0,Carnegie Mellon University
+Douglas Lenat,1,University of Pennsylvania
+Yann LeCun,3,ESIEE Paris
+Rasmus Lerdorf,0,University of Waterloo
+Max Levchin,0,University of Illinois at Urbana-Champaign
+Leonid Levin,1,Moscow University
+Kevin Leyton-Brown,0,McMaster University
+J.C.R. Licklider,0,Washington University in St. Louis
+Jochen Liedtke,0,Bielefeld University
+John Lions,0,University of Sydney
+Richard J. Lipton,1,Carnegie Mellon University
+Barbara Liskov,3,"University of California, Berkeley"
+Yanhong Annie Liu,0,Cornell University
+Darrell Long,2,San Diego State University
+Patricia D. Lopez,0,New Mexico State University
+Gillian Lovegrove,0,"Newnham College, Cambridge"
+David Luckham,0,Doctor of Philosophy
+Nancy Lynch,7,Brooklyn College
+Nadia Magnenat Thalmann,0,University of Geneva
+Tom Maibaum,1,Bachelor of Science
+Simon Marlow,1,University of Glasgow
+Zohar Manna,4,Technion %E2%80%93 Israel Institute of Technology
+James Martin (author),2,University of Oxford
+Yuri Matiyasevich,2,Leningrad State University
+Yukihiro Matsumoto,0,University of Tsukuba
+John Mauchly,4,Johns Hopkins University
+Ujjwal Maulik,0,Nabadwip Bakultala High School
+Derek McAuley,2,University of Cambridge
+John McCarthy (computer scientist),6,Princeton University
+Andrew McCallum,0,Dartmouth College
+Douglas McIlroy,0,Cornell University
+Marshall Kirk McKusick,0,"University of California, Berkeley"
+Kurt Mehlhorn,4,Cornell University
+Bertrand Meyer,0,Universit%C3%A9 de Nancy
+Silvio Micali,4,La Sapienza University of Rome
+Jack Minker,3,Brooklyn College
+Marvin Minsky,7,Harvard University
+James G. Mitchell,1,University of Waterloo
+Tom M. Mitchell,2,Stanford University
+Arvind (computer scientist),0,IIT Kanpur
+Paul Mockapetris,4,Massachusetts Institute of Technology
+Cleve Moler,2,California Institute of Technology
+Faron Moller,0,University of British Columbia
+Edward F. Moore,0,Virginia Tech
+Gordon Moore,11,"University of California, Berkeley"
+Roger Moore (computer scientist),2,Stanford University
+Hans Moravec,0,Acadia University
+Carroll Morgan (computer scientist),0,Doctor of Philosophy
+Robert Tappan Morris,0,Harvard University
+Joel Moses,0,Bachelor of Arts
+Rajeev Motwani,1,"St. Columba%27s School, Delhi"
+Stephen Muggleton,5,University of Edinburgh
+Alan Mycroft,0,University of Cambridge
+Brad A. Myers,4,University of Toronto
+Makoto Nagao,6,Kyoto University
+Roger Needham,1,Doncaster Grammar School
+Greg Nelson (computer scientist),1,Harvard University
+Allen Newell,5,Stanford University
+Max Newman,4,"St John%27s College, Cambridge"
+Andrew Ng,10,Raffles Institution
+Nils John Nilsson,0,Stanford University
+Maurice Nivat,7,Joseph Fourier University
+Phiwa Nkambule,6,University of Pretoria
+Jerre Noe,0,"University of California, Berkeley"
+Peter Nordin,0,Technical University of Dortmund
+Donald Norman,0,Massachusetts Institute of Technology
+Peter Norvig,3,Brown University
+George Novacky,0,University of Pittsburgh
+Kristen Nygaard,4,Master of Science
+Martin Odersky,0,Ludwig Maximilian University of Munich
+Steve Omohundro,0,Stanford University
+John Ousterhout,2,Bachelor%27s degree
+Mark Overmars,0,Utrecht University
+Susan Owicki,0,Cornell University
+Larry Page,0,University of Michigan
+Sankar Pal,2,Rajabazar Science College
+Christos Papadimitriou,5,National Technical University of Athens
+David Park (computer scientist),0,University of Oxford
+David Patterson (computer scientist),9,"South High School (Torrance, California)"
+Mike Paterson,2,Doctor of Philosophy
+Lawrence Paulson,2,California Institute of Technology
+Randy Pausch,5,Brown University
+Judea Pearl,7,Technion %E2%80%93 Israel Institute of Technology
+Alan Perlis,2,Chemistry
+Radia Perlman,0,MIT
+Simon Peyton Jones,2,University of Cambridge
+Kathy Pham,0,Georgia Institute of Technology
+Keshav K Pingali,3,IIT Kanpur
+Gordon Plotkin,3,University of Glasgow
+Willem van der Poel,1,Delft University of Technology
+Cicely Popplewell,0,University of Cambridge
+Emil Post,0,City College of New York
+Jon Postel,3,"University of California, Los Angeles"
+Franco Preparata,1,University of Rome La Sapienza
+William H. Press,0,Harvard University
+Grzegorz Rozenberg,0,Polish Academy of Sciences
+Michael O. Rabin,10,Hebrew University of Jerusalem
+Brian Randell,0,Imperial College London
+Anders P. Ravn,1,University of Copenhagen
+Raj Reddy,4,University of Madras
+David P. Reed,0,MIT
+John C. Reynolds,1,Purdue University
+Joyce K. Reynolds,0,University of Southern California
+Reinder van de Riet,0,University of Amsterdam
+Martin Richards (computer scientist),0,University of Cambridge
+C. J. van Rijsbergen,0,University of Western Australia
+Dennis Ritchie,10,Harvard University
+Ron Rivest,5,Stanford University
+Ken Robinson (computer scientist),1,University of Sydney
+Douglas T. Ross,2,Oberlin College
+Guido van Rossum,1,University of Amsterdam
+Rudy Rucker,0,St. Xavier High School (Louisville)
+Jeff Rulifson,0,University of Washington
+George Sadowsky,0,Harvard University
+Mehrnoosh Sadrzadeh,0,Universit%C3%A9 du Qu%C3%A9bec %C3%A0 Montr%C3%A9al
+Gerard Salton,0,Brooklyn College
+Jean E. Sammet,2,Mount Holyoke College
+Carl Sassenrath,0,"University of California, Davis"
+Mahadev Satyanarayanan,5,https://www.cmu.edu/
+Walter Savitch,0,"University of California, Berkeley"
+Jonathan Schaeffer,2,University of Waterloo
+Steve Schneider (computer scientist),0,University of Oxford
+Bruce Schneier,0,American University
+Fred B. Schneider,1,Stony Brook University
+Sarita Schoenebeck,0,Georgia Institute of Technology
+Dana Scott,6,"University of California, Berkeley"
+Robert Sedgewick (computer scientist),2,Brown University
+Ravi Sethi,0,"Indian Institute of Technology, Kanpur"
+Nigel Shadbolt,1,Newcastle University
+Adi Shamir,7,Tel Aviv University
+Claude Shannon,10,University of Michigan
+David E. Shaw,0,"University of California, San Diego"
+Scott Shenker,5,Brown University
+Ben Shneiderman,1,City College of New York
+Edward H. Shortliffe,0,Harvard University
+Daniel Siewiorek,2,University of Michigan
+Joseph Sifakis,2,National Technical University of Athens
+Herbert A. Simon,10,University of Chicago
+Munindar P. Singh,6,University of Texas at Austin
+Ramesh Sitaraman,0,"Indian Institute of Technology, Madras"
+Daniel Sleator,1,University of Illinois at Urbana%E2%80%93Champaign
+Brian Cantwell Smith,0,Massachusetts Institute of Technology
+David Canfield Smith,0,Oberlin College
+Carol Spradling,0,University of Nebraska - Lincoln
+Rohini Kesavan Srihari,0,University of Waterloo
+Sargur Srihari,2,Bangalore University
+Maciej Stachowiak,0,MIT Electrical Engineering and Computer Science Department
+Richard Stallman,5,Harvard University
+Richard E. Stearns,3,Carleton College
+"Guy L. Steele, Jr.",2,Bachelor of Arts
+Thomas Sterling (computing),6,Old Dominion University
+W. Richard Stevens,0,University of Michigan
+Michael Stonebraker,2,Princeton University
+Christopher Strachey,0,Gresham%27s School
+Volker Strassen,0,University of G%C3%B6ttingen
+Bjarne Stroustrup,11,Aarhus University
+Madhu Sudan,1,IIT Delhi
+Gerald Jay Sussman,2,Bachelor of Science
+Bert Sutherland,1,Rensselaer Polytechnic Institute
+Ivan Sutherland,8,MIT
+Latanya Sweeney,0,Harvard University
+Mario Szegedy,1,University of Chicago
+Andrew S. Tanenbaum,0,Massachusetts Institute of Technology
+Austin Tate,1,Lancaster University
+Bernhard Thalheim,2,Dresden University of Technology
+Robert Tarjan,3,California Institute of Technology
+Valerie Taylor (computer scientist),3,Purdue University
+Jaime Teevan,5,Yale University
+Shang-Hua Teng,4,Shanghai Jiao Tong University
+Larry Tesler,0,Stanford University
+Charles P. Thacker,6,"University of California, Berkeley"
+Daniel Thalmann,1,University of Geneva
+Ken Thompson,11,"University of California, Berkeley"
+Simon Thompson (professor),0,Doctor of Philosophy
+Sebastian Thrun,3,University of Bonn
+Walter F. Tichy,0,Technische Universit%C3%A4t M%C3%BCnchen
+Chai Keong Toh,8,University of Cambridge
+Linus Torvalds,0,University of Helsinki
+Leonardo Torres Quevedo,9,/w/index.php?title=Official School of the Road Engineers%27 Corps of Madrid&action=edit&redlink=1
+Gloria Townsend,1,Indiana University
+John Tukey,7,Brown University
+Alan Turing,1,Sherborne School
+David Turner (computer scientist),0,Doctor of Philosophy
+Murray Turoff,1,University of California - Berkeley
+Jeffrey D. Ullman,3,Columbia University
+Leslie Valiant,6,University of Cambridge
+Vladimir Vapnik,11,Russian Academy of Sciences
+Moshe Vardi,8,Bar-Ilan University
+Dorothy Vaughan,0,Wilberforce University
+Bernard Vauquois,0,Doctor of Philosophy
+Umesh Vazirani,1,MIT
+Manuela M. Veloso,4,Instituto Superior T%C3%A9cnico
+Sergiy Vilkomir,2,Kharkov State University
+Paul Vitanyi,0,Delft University of Technology
+Andrew Viterbi,8,Massachusetts Institute of Technology
+Paul Vixie,0,Keio University
+Eiiti Wada,0,University of Tokyo
+David Waltz,2,Massachusetts Institute of Technology
+James Z. Wang,0,Stanford University
+Manfred K. Warmuth,1,"University of Colorado, Boulder"
+David H. D. Warren,0,University of Edinburgh
+Kevin Warwick,5,Aston University
+Jan Weglarz,0,Pozna%C5%84 University of Technology
+Philip Wadler,4,Stanford University
+Peter Wegner,2,#cite note-mathgene-1
+Joseph Henry Wegstein,0,University of Illinois
+Peter J. Weinberger,0,"University of California, Berkeley"
+Mark Weiser,0,New College of Florida
+Joseph Weizenbaum,0,Wayne State University
+David Wheeler (computer scientist),3,University of Cambridge
+Jennifer Widom,6,Cornell University
+Gio Wiederhold,3,"University of California, San Francisco"
+Norbert Wiener,2,Tufts College
+Adriaan van Wijngaarden,1,Delft University of Technology
+Mary Allen Wilkes,0,Wellesley College
+Maurice Vincent Wilkes,6,"King Edward VI College, Stourbridge"
+Yorick Wilks,0,University of Cambridge
+James H. Wilkinson,4,"Trinity College, Cambridge"
+Sophie Wilson,8,"Selwyn College, Cambridge"
+Shmuel Winograd,0,New York University
+Terry Winograd,1,Colorado College
+Patrick Winston,1,MIT
+Niklaus Wirth,7,Bachelor of Science
+Neil Wiseman,0,University of Cambridge
+Stephen Wolfram,1,Dragon School
+Mike Woodger,0,University College London
+Philip Woodward,6,Oxford University
+Beatrice Helen Worsley,0,University of Toronto
+Steve Wozniak,0,University of Colorado Boulder
+William Wulf,0,University of Illinois Urbana-Champaign
+Mihalis Yannakakis,1,National Technical University of Athens
+Andrew Chi-Chih Yao,4,National Taiwan University
+John Yen,3,"University of California, Berkeley"
+Nobuo Yoneda,0,University of Tokyo
+Edward Yourdon,0,Massachusetts Institute of Technology
+Moti Yung,6,Columbia University
+Lotfi Zadeh,15,University of Tehran
+Arif Zaman,0,Stanford University
+Stanley Zdonik,0,Massachusetts Institute of Technology
+Hussein Zedan,0,University of Bristol
+Shlomo Zilberstein,0,"University of California, Berkeley"
+Jill Zimmerman,0,Purdue University
+Mark Zuckerberg,0,Harvard University
+Konrad Zuse,7,Technical University of Berlin

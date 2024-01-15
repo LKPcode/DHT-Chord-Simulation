@@ -232,41 +232,84 @@ def between(ID1, ID2, key):
     else:
         return True if key > ID1 or key <= ID2 else False
 
-
+#####################################################
+    
 dht = DHT()
 
 # nodes is in config.py
 for i in range(0, nodes):
     dht.join()
 
-randID = random.choice(list(dht.nodeDict.keys()))
+print("Number of nodes in the network: ", dht.nodeNum)
+#print the nodes in the network Dict
+# dht.print()
+
+# randID = random.choice(list(dht.nodeDict.keys()))#
 
 dht.fix_all_fingers_of_all_nodes()
 # print(dht.nodeNum)
+
 # dht.send_random_exact_match_queries(1000)
 
 dht.insert_values(data, hashedData)
 # dht.insert_key_value_pair(32,222).print_hash_table()
 
+random_node = list(dht.nodeDict.items())[0][1]
+print("Hash table of a random node: ", random_node.ID)
+print(random_node.print_hash_table())
+print("Finger table of a random node: ")
+print(random_node.print_finger_table())
 
-# allKeys list will gather every key from every node
-allKeys = []
-# key is the node actuzally
-for key in dht.nodeDict:
-    # print (len(dht.nodeDict[key].hashTable))
-    allKeys.append(len(dht.nodeDict[key].hashTable))
-print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
-print("the perfect average is", len(hashedData)/nodes)
-print(dht.nodeNum)
-#     f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")
-# print(hash_integer(2))
 
+# Search for a key in the network
+print("Search for a key in the network")
+randKey = 2577749
+randID = random.choice(list(dht.nodeDict.keys()))
+print("Key: ", randKey)
+print("Node: ", randID)
+node_with_key = dht.findSuccessor(dht.nodeDict[randID], randKey).ID
+print("Node with key: ", node_with_key)
+
+# list hash table of node with key
+print("Hash table of node with key")
+print(dht.nodeDict[node_with_key].hashTable)
+ht_value_list = dht.nodeDict[node_with_key].hashTable[randKey]
+
+# [{'name': 'Alfred Aho', 'awards': '5', 'university': 'University of Toronto'}, {'name': 'William Kahan', 'awards': '5', 'university': 'University of Toronto'}, {'name': 'Alan Kay', 'awards': '3', 'university': 'University of Colorado at Boulder'}, {'name': 'Brian Kernighan', 'awards': '0', 'university': 'University of Toronto'}, {'name': 'Brad A. Myers', 'awards': '4', 'university': 'University of Toronto'}, {'name': 'Beatrice Helen Worsley', 'awards': '0', 'university': 'University of Toronto'}]
+# funtion that returns the names of the people with more than x awards
+def filter_by_awards(people, min_awards):
+    """
+    Filters the list of people, returning the names of those who have more than 'min_awards' awards.
+
+    :param people: List of dictionaries containing person's details
+    :param min_awards: Minimum number of awards required to be included in the result
+    :return: List of names of people who have more than 'min_awards' awards
+    """
+    filtered_names = [person['name'] for person in people if int(person['awards']) > min_awards]
+    return filtered_names
+
+print(filter_by_awards(ht_value_list, 3))
+
+
+
+# # allKeys list will gather every key from every node
+# allKeys = []
+# # key is the node actuzally
 # for key in dht.nodeDict:
-#     print ("node: ", key)
-#     dht.nodeDict[key].print_hash_table()
+#     # print (len(dht.nodeDict[key].hashTable))
+#     allKeys.append(len(dht.nodeDict[key].hashTable))
+# print("the average keys per node is", sum(allKeys)/len(dht.nodeDict))
+# print("the perfect average is", len(hashedData)/nodes)
+# print(dht.nodeNum)
+# #     f"\nAverage num of hops: {sum(dht.hopsOfFindSuccessor) / len(dht.hopsOfFindSuccessor)}")
+# # print(hash_integer(2))
 
-# print (randID)
-for i in range(0, 100):
-    dht.removeNodeSafely()
+# # for key in dht.nodeDict:
+# #     print ("node: ", key)
+# #     dht.nodeDict[key].print_hash_table()
 
-dht.fix_all_fingers_of_all_nodes()
+# # print (randID)
+# for i in range(0, 100):
+#     dht.removeNodeSafely()
+
+# dht.fix_all_fingers_of_all_nodes()

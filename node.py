@@ -24,7 +24,12 @@ class Node:
             self.save_key_value_pair(item[0],item[1])
 
     def save_key_value_pair(self,key,value):
-        self.hashTable[key]=value
+        # If key does not exist then create a empty list and append the first value
+        if key not in self.hashTable:
+            self.hashTable[key] = []
+            self.hashTable[key].append(value)
+        else:
+            self.hashTable[key].append(value)
 
     def print_hash_table(self):
         print("Hash Table of node",self.ID)
